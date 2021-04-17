@@ -1,0 +1,34 @@
+{
+"builders" : [
+    {
+        "type" : "amazon-ebs",
+        "region" : "us-east-1",
+        "instance_type" : "t2.micro",
+        "source_ami" : "ami-042e8287309f5df03",
+        "ssh_username" : "ubuntu",
+        "ami_name" : "myfirstamipacker",
+        "tags" : {
+            "Name":"mypackerami"
+        }
+    
+    }
+
+],
+"provisioners" : [
+    {
+        "type" : "shell",
+        "inline": [
+         "sudo apt update",
+         "sudo apt install software-properties-common",
+         "sudo apt install python3.8 -y",
+         "sudo apt-add-repository --yes --update ppa:ansible/ansible",
+         "sudo apt install ansible -y",
+         "sudo su",
+         "cd /etc/ansible",
+         "ansible --version"
+         
+         
+        ]
+    }
+]
+}
