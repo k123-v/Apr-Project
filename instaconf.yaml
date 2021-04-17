@@ -1,0 +1,28 @@
+---
+  - name: Install and Configure Tomcat
+    become: True
+    become_method: sudo
+    become_user: root
+    gather_facts: True
+    vars:
+       tom_ver: 10.0.5
+       tomcat_url: https://downloads.apache.org/tomcat/tomcat-{{tom_ver.split('.')[0]}}/v{{tom_ver}}/bin/apache-tomcat-{{tom_ver-}}.tar.gz
+    tasks:
+      - name: updating repos
+        apt: force_apt_get=yes upgrade=dist
+      - name: Installing required java
+        apt:
+           name: default-jre
+           state: present
+      - name: Downloading required tomcat
+        get_url:
+           url: "{{tomcat_url}}"
+           dest: /usr/local
+      - name: Extracting downloaded tomcat tar file
+        unarchive:
+           src: "/usr/local/apache-tomcat-{{tom_ver}}.tar.gz"
+           dest: /usr/local
+      - name: Renaming of Downloaded tomcat tar
+        command: mv /usr/local/apache-tomcat-{{tom_ver}} /usr/local/tclatest
+      - name: Starting tomcat
+        shell: nohup /usr/local/tclatest/bin/startup.sh &
