@@ -1,5 +1,6 @@
 ---
   - name: Install and Configure Tomcat
+    hosts: webserver
     become: True
     become_method: sudo
     become_user: root
