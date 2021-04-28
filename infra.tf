@@ -12,7 +12,7 @@ resource "aws_instance" "customdevice" {
     private_key = "feb24key"
     
   }
-  private_ip ="172.31.88.71" 
+  private_ip ="172.31.90.136" 
   tags = {
     Name = "custompackerec2"
   }
