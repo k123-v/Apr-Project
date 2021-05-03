@@ -25,5 +25,7 @@
            dest: /usr/local
       - name: Renaming of Downloaded tomcat tar
         command: mv /usr/local/apache-tomcat-{{tom_ver}} /usr/local/tclatest
+      - name: Ensure directories are 0777
+        command: sudo chmod 777 /usr/local/tclatest/ 
       - name: Starting tomcat
         shell: nohup /usr/local/tclatest/bin/startup.sh &
