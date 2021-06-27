@@ -6,7 +6,7 @@
     become_user: root
     gather_facts: True
     vars:
-       tom_ver: 10.0.6
+       tom_ver: 10.0.7
        tomcat_url: https://downloads.apache.org/tomcat/tomcat-{{tom_ver.split('.')[0]}}/v{{tom_ver}}/bin/apache-tomcat-{{tom_ver-}}.tar.gz
     tasks:
       - name: updating repos
