@@ -17,7 +17,7 @@ RUN wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.68/bin/apache-tomcat-
 
 RUN tar -zxvf /tmp/apache-tomcat-8.5.68.tar.gz -C /opt/tomcat
 
-ADD /tmp/webapp.war /opt/tomcat/apache-tomcat-8.5.68/webapps/
+#ADD /tmp/webapp.war /opt/tomcat/apache-tomcat-8.5.68/webapps/
 
 RUN nohup /opt/tomcat/apache-tomcat-8.5.68/bin/./startup.sh &
 
