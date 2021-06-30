@@ -19,6 +19,6 @@ RUN tar -zxvf /tmp/apache-tomcat-8.5.68.tar.gz -C /opt/tomcat
 
 #ADD /tmp/webapp.war /opt/tomcat/apache-tomcat-8.5.68/webapps/
 
-RUN nohup /opt/tomcat/apache-tomcat-8.5.68/bin/./startup.sh &
+# RUN nohup /opt/tomcat/apache-tomcat-8.5.68/bin/./startup.sh &
 
 EXPOSE 8080
