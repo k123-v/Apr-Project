@@ -1,0 +1,13 @@
+---
+  - hosts: webserver
+    become: True
+    become_method: sudo
+    become_user: root
+    gather_facts: True
+    tasks:
+    - name: build the image
+      docker_image:
+        name=ubuntu_ansible
+        tag=ex1
+        path=/home/ubuntu/Apr-Project/
+        state=present
