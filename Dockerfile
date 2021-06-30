@@ -4,6 +4,7 @@ RUN mkdir -p  /opt/tomcat
 RUN cd /opt/tomcat
 RUN apt update -y
 
+
 RUN apt install default-jdk -y
 #RUN useradd -r -m -U -d /opt/tomcat -s /bin/false tomcat
 
@@ -18,4 +19,8 @@ RUN wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.68/bin/apache-tomcat-
 
 RUN tar -zxvf /tmp/apache-tomcat-8.5.68.tar.gz -C /opt/tomcat
 
+ADD /tmp/webapp.war /opt/tomcat/apache-tomcat-8.5.68/webapps/
+
 EXPOSE 8080
+
+CMD ["/opt/tomcat/apache-tomcat-8.5.68/bin/startup.sh","run"]
