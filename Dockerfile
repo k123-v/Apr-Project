@@ -21,4 +21,4 @@ RUN tar -zxvf /tmp/apache-tomcat-8.5.68.tar.gz -C /opt/tomcat
 
 RUN nohup /opt/tomcat/apache-tomcat-8.5.68/bin/./startup.sh &
 
-EXPOSE 8080
+# EXPOSE 8080
