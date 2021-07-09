@@ -18,6 +18,7 @@ ${REMOTE_URL}               http://ec2-44-194-142-96.compute-1.amazonaws.com:444
 Start Firefox Browser
     Open Browser            ${URL}  ${BROWSER}  ${ALIAS}  ${REMOTE_URL}
     Maximize Browser Window
+    Sleep  8s
     Click Element  xpath=//*[@id="myButton"]
     Sleep  5s
     Close All Browsers
