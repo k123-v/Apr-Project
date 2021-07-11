@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    
+
+    stages {
+        stage ("git required for doing testing ") {
+            steps {
+                git 'https://github.com/k123-v/Apr-Project.git'
+            }
+        }
+        
+        stage("Connect to Testing Machine,add public key and Run ") {
+            steps {
+                sshagent(credentials: ['deploy']) {
+                    sh '''
+                       ssh -o StrictHostKeyChecking=no ubuntu@172.31.18.104 "mkdir tests reports && git clone https://github.com/k123-v/Apr-Project.git && mv Apr-Project/app_testing.robot /home/ubuntu/tests/"
+                       '''
+                    
+                }
+                    
+            }
+        }
+		stage("Export Workspace and run contianer to test") {
+            steps {
+                sshagent(credentials: ['deploy']) {
+                    sh '''
+                       ssh -o StrictHostKeyChecking=no ubuntu@172.31.18.104 "sudo docker run -v /home/ubuntu/tests:/opt/robotframework/tests:Z -v /home/ubuntu/reports:/opt/robotframework/reports:Z ppodgorsek/robot-framework:latest"
+                       '''
+                    
+                }
+                    
+            }
+        }
+
+    }
+
+}
+
+
+
+ 
