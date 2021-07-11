@@ -19,11 +19,6 @@ pipeline {
                 sh "mvn clean install"
             }
         }
-        stage('git for infra setup') {
-            steps {
-                git credentialsId: '9d09858d-eaca-4dbc-aa34-b3b3459be584', url: 'https://github.com/k123-v/Apr-Project.git'
-            }
-        }
         stage("Run Packer to create a custom AMI") {
             steps {
                 sh 'rm -rf Apr-Project'
@@ -52,7 +47,7 @@ pipeline {
             steps {
                 sshagent(credentials: ['deploy']) {
                     sh '''
-                       scp -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/feb24key.pem webapp/target/webapp.war ubuntu@172.31.90.136:/tmp
+                       scp -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/feb25key.pem webapp/target/webapp.war ubuntu@172.31.90.136:/tmp
                        '''
                 }
                     
