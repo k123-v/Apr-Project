@@ -14,7 +14,7 @@ pipeline {
                 git 'https://github.com/k123-v/Devopsmaven.git'
             }
         }
-                stage('Intalize using maven and build war/jar file using it') {
+        stage('Intalize using maven and build war/jar file using it') {
             steps {
                 sh "mvn clean install"
             }
@@ -80,7 +80,7 @@ pipeline {
                     
             }
         }
-		stage("Connect to Docker Container and copy application war file to Docker Container") {
+        stage("Connect to Docker Container and copy application war file to Docker Container") {
             steps {
                 sshagent(credentials: ['deploy']) {
                     sh '''
