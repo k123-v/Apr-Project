@@ -3,7 +3,7 @@ pipeline {
     
 
     stages {
-        stage ("git required for doing testing ") {
+        stage ("Git Codebase for Testing ") {
             steps {
                 git 'https://github.com/k123-v/Apr-Project.git'
             }
