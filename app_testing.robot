@@ -7,10 +7,10 @@ Library                     SeleniumLibrary
 
 
 *** Variables ***
-${URL}                      http://ec2-44-194-91-110.compute-1.amazonaws.com:8080/webapp/
+${URL}                      http://ec2-44-197-130-249.compute-1.amazonaws.com:8080/webapp/
 ${BROWSER}                  firefox
 ${ALIAS}                    None
-${REMOTE_URL}               http://ec2-3-216-251-198.compute-1.amazonaws.com:4444
+${REMOTE_URL}               http://ec2-34-225-68-137.compute-1.amazonaws.com:4444
 
 
 
